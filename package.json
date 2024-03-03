@@ -1,0 +1,21 @@
+{
+  "name": "c-nchoku",
+  "version": "0.1.0",
+  "description": "定期リマインダー with GAS",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/traP-jp/c-nchoku.git"
+  },
+  "author": "H1rono",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/traP-jp/c-nchoku/issues"
+  },
+  "homepage": "https://github.com/traP-jp/c-nchoku#readme",
+  "devDependencies": {
+    "@google/clasp": "^2.4.2"
+  }
+}
