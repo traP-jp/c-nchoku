@@ -11,7 +11,7 @@ function main() {
     const channelId = props.getProperty("TRAQ_CHANNEL_ID");
     const webhookId = props.getProperty("TRAQ_WEBHOOK_ID");
     const webhookSecret = props.getProperty("TRAQ_WEBHOOK_SECRET");
-    const message = "ping";
+    const message = props.getProperty("MESSAGE") ?? "ping";
 
     if (!channelId || !webhookId || !webhookSecret) {
         Logger.log("init failed");
@@ -25,13 +25,14 @@ function main() {
         webhookSecret,
     };
 
-    postMessage(qInfo, message);
+    postMessage(qInfo, message, true);
 }
 
 // https://github.com/H1rono/blog-notify/blob/0683955b070a10288a9b34a890e29cce5d3d803f/main.ts#L136-L153
 function postMessage(
     { apiBasePath, channelId, webhookId, webhookSecret }: traQInfo,
     content: string,
+    embed: boolean,
 ): GoogleAppsScript.URL_Fetch.HTTPResponse {
     const signature = hmacSha1(webhookSecret, content);
     const params: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
@@ -43,7 +44,7 @@ function postMessage(
         },
         payload: content,
     };
-    const url = `${apiBasePath}/webhooks/${webhookId}`;
+    const url = `${apiBasePath}/webhooks/${webhookId}?embed=${embed}`;
     return UrlFetchApp.fetch(url, params);
 }
 
