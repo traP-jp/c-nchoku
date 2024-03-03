@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/traP-jp/c-nchoku#readme",
   "devDependencies": {
-    "@google/clasp": "^2.4.2"
+    "@google/clasp": "^2.4.2",
+    "typescript": "^5.3.3"
   }
 }
